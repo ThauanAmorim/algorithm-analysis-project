@@ -9,8 +9,7 @@ public class App {
     public static void main( String[] args ) {
         ArrayGenerator arrayGenerator = new ArrayGenerator();
 
-        arrayGenerator.almostOrdered(10, 70);
-        
-        System.out.println(arrayGenerator.toString());
+        arrayGenerator.inverselyOrdered(1000000);
+        System.out.println(arrayGenerator.getArray()[0]);
     }
 }

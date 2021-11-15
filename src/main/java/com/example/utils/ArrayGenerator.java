@@ -1,9 +1,13 @@
 package com.example.utils;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class ArrayGenerator {
     private Integer[] array = null;
+
     private Random random = new Random();
 
     public Integer[] ordered(int quantity) {
@@ -20,13 +24,10 @@ public class ArrayGenerator {
     }
 
     public Integer[] inverselyOrdered(int quantity) {
-        array = new Integer[quantity];
-        int index = 0;
-        
-        for(int i = quantity-1; i >= 0; i--) {
-            array[index++] = i;
-        }
-        return array;
+        array = ordered(quantity);
+        List<Integer> list = Arrays.asList(array);
+        Collections.reverse(list);
+        return (Integer[]) list.toArray();
     }
 
     public Integer[] almostOrdered(int quantity, float orderedPorcent) {
@@ -73,6 +74,10 @@ public class ArrayGenerator {
             array[firstPosition] = array[secondPosition];
             array[secondPosition] = aux;
         }
+        return array;
+    }
+
+    public Integer[] getArray() {
         return array;
     }
 
