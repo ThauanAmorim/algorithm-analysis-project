@@ -30,6 +30,16 @@ public class ArrayGenerator {
         return (Integer[]) list.toArray();
     }
 
+    public Integer[] random(int quantity) {
+        array = new Integer[quantity];
+        int maxValue = (quantity * 10) + 1;
+        
+        for(int i = 0; i < quantity; i++) {
+            array[i] = random.nextInt(maxValue);
+        }
+        return array;
+    }
+
     public Integer[] almostOrdered(int quantity, float orderedPorcent) {
         array = ordered(quantity);
 
