@@ -1,5 +1,6 @@
 package com.example.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -37,6 +38,9 @@ public class ArrayGenerator {
         for(int i = 0; i < quantity; i++) {
             array[i] = random.nextInt(maxValue);
         }
+
+        repeaterNumberValidate(array, new ArrayList<>());
+
         return array;
     }
 
@@ -87,16 +91,21 @@ public class ArrayGenerator {
         return array;
     }
 
-    public Integer[] getArray() {
-        return array;
-    }
-
-    public String toString() {
-        String text = "[";
-        for (int i = 0; i < array.length-1; i++) {
-            text += array[i] + ", ";
+    private void repeaterNumberValidate(Integer[] array, List<Integer> indexRepeater) {
+        for(int i = 0; i < array.length -1; i++) {
+            for(int j = i +1; j < array.length; j++){
+                if (array[j] == array[i]) {
+                    indexRepeater.add(j);
+                }
+            }
         }
-        text += array[array.length-1] + "]";
-        return text;
+
+        if(!indexRepeater.isEmpty()) {
+            for(Integer index : indexRepeater) {
+                array[index] = random.nextInt((array.length * 10) + 1);
+            }
+            indexRepeater.clear();
+            repeaterNumberValidate(array, indexRepeater);
+        }
     }
 }

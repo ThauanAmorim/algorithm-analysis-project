@@ -11,12 +11,23 @@ public abstract class base {
         timer = Stopwatch.createUnstarted();
     }
 
-    protected abstract void run(Integer[] array);
+    protected abstract Integer[] run(Integer[] array);
 
     public Long calculateTime(Integer[] array) {
+        toPrint(array);
         timer.start();
         run(array);
         timer.stop();
+        toPrint(array);
         return timer.elapsed(TimeUnit.NANOSECONDS);
+    }
+
+    private void toPrint(Integer[] array) {
+        String text = "[";
+        for (int i = 0; i < array.length-1; i++) {
+            text += array[i] + ", ";
+        }
+        text += array[array.length-1] + "]";
+        System.out.println(text);
     }
 }
