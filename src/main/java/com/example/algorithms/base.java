@@ -11,11 +11,11 @@ public abstract class base {
         timer = Stopwatch.createUnstarted();
     }
 
-    protected abstract void run();
+    protected abstract void run(Integer[] array);
 
-    public Long calculateTime() {
+    public Long calculateTime(Integer[] array) {
         timer.start();
-        run();
+        run(array);
         timer.stop();
         return timer.elapsed(TimeUnit.NANOSECONDS);
     }
