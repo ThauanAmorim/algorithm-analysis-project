@@ -52,23 +52,22 @@ public class ArrayGenerator {
         int secondPosition;
         int aux;
 
-        System.out.println(toString());
         if(exchangesNumber % 2 != 0) {
             --exchangesNumber;
 
             int index = 0;
             do {
-                index = random.nextInt(quantity);
-            } while (array[index]+1 == array[index+1] || index == 0);
+                index = random.nextInt(quantity-3) +1;
+            } while (array[index]+1 == array[index+1]);
             
-            if(index == quantity-1 || index == quantity-1) {
+            if(index == quantity-1) {
                 aux = array[index-1];
                 array[index-1] = array[index];
                 array[index] = aux;
             } else {
                 int number = 0;
                 do {
-                    number = random.nextInt((array[index+2] - array[index+1] - 1)) + (array[index+1] + 1);
+                    number = random.nextInt((array[index+2] - array[index+1])) + (array[index+1] + 2);
                 } while (number == array[index]);
                 array[index] = number;
             }

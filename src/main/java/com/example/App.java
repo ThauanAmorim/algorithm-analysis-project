@@ -8,10 +8,10 @@ public class App {
         ArrayGenerator generator = new ArrayGenerator();
         InsertionSort sort = new InsertionSort();
 
-        Integer[] array = generator.random(10);
+        Integer[] array = generator.almostOrdered(10, 50);
 
         Long time = sort.calculateTime(array);
-        System.out.println(time + "ns");
+        System.out.println(time + "ms");
         
     }
 }

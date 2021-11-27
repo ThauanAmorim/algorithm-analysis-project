@@ -14,7 +14,7 @@ public abstract class base {
     protected abstract Integer[] run(Integer[] array);
 
     public Long calculateTime(Integer[] array) {
-        toPrint(array);
+        // toPrint(array);
         timer.start();
         run(array);
         timer.stop();
