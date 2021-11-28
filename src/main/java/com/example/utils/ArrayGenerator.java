@@ -6,13 +6,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class ArrayGenerator {
-    private Integer[] array = null;
+import com.example.entities.ArrayContainer;
 
+public class ArrayGenerator {
     private Random random = new Random();
 
-    public Integer[] ordered(int quantity) {
-        array = new Integer[quantity];
+    public ArrayContainer ordered(int quantity) {
+        Integer[] array = new Integer[quantity];
         int count = 2;
         int lastNumber = 0;
 
@@ -21,31 +21,39 @@ public class ArrayGenerator {
             lastNumber = array[i];
             count++;
         }
-        return array;
+        
+        return new ArrayContainer("ordered", quantity, array);
     }
 
-    public Integer[] inverselyOrdered(int quantity) {
-        array = ordered(quantity);
+    public ArrayContainer inverselyOrdered(int quantity) {
+        ArrayContainer arrayContainer = ordered(quantity);
+        Integer[] array = arrayContainer.getArray();
+
         List<Integer> list = Arrays.asList(array);
         Collections.reverse(list);
-        return (Integer[]) list.toArray();
+        array = (Integer[]) list.toArray();
+        arrayContainer.setArray(array);
+        arrayContainer.setAlgorithmName("Inversely Ordered");
+
+        return arrayContainer;
     }
 
-    public Integer[] random(int quantity) {
-        array = new Integer[quantity];
+    public ArrayContainer random(int quantity) {
+        Integer[] array = new Integer[quantity];
         int maxValue = (quantity * 10) + 1;
         
         for(int i = 0; i < quantity; i++) {
             array[i] = random.nextInt(maxValue);
         }
 
-        repeaterNumberValidate(array, new ArrayList<>());
+        repeaterNumberValidate(array, new ArrayList<Integer>());
 
-        return array;
+        return new ArrayContainer("random", quantity, array);
     }
 
-    public Integer[] almostOrdered(int quantity, float orderedPorcent) {
-        array = ordered(quantity);
+    public ArrayContainer almostOrdered(int quantity, float orderedPorcent) {
+        ArrayContainer arrayContainer = ordered(quantity);
+        Integer[] array = arrayContainer.getArray();
 
         int exchangesNumber = (int) (quantity - (quantity * (orderedPorcent / 100)));
         int firstPosition;
@@ -74,7 +82,7 @@ public class ArrayGenerator {
         }
 
         if(exchangesNumber <= 0)
-            return array;
+            return new ArrayContainer("almost Ordered - " + orderedPorcent + "%", quantity, array);
 
         for(int i = 0; i < exchangesNumber / 2; i++) {
             firstPosition = random.nextInt(quantity);
@@ -87,7 +95,7 @@ public class ArrayGenerator {
             array[firstPosition] = array[secondPosition];
             array[secondPosition] = aux;
         }
-        return array;
+        return new ArrayContainer("almost Ordered - " + orderedPorcent + "%", quantity, array);
     }
 
     private void repeaterNumberValidate(Integer[] array, List<Integer> indexRepeater) {

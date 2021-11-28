@@ -1,6 +1,9 @@
 package com.example.algorithms;
 
-public class InsertionSort extends base {
+import org.springframework.stereotype.Service;
+
+@Service
+public class InsertionSort extends AlgorithmBase {
 
     @Override
     protected Integer[] run(Integer[] array) {
