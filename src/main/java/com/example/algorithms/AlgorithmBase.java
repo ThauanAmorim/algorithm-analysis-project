@@ -37,8 +37,9 @@ public abstract class AlgorithmBase {
         run(arrayContainer.getArray());
         timer.stop();
         // toPrint(array);
-        result.setTime(timer.elapsed(TimeUnit.NANOSECONDS));
-        result.setAlgorithmName(arrayContainer.getAlgorithmName());
+        result.setTime(timer.elapsed(TimeUnit.MILLISECONDS));
+        result.setAlgorithmName(getClass().getSimpleName());
+        result.setArrayType(arrayContainer.getArrayType());
         result.setLenght(arrayContainer.getLenght());
         result.setRun(++runNumber);
 

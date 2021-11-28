@@ -33,7 +33,7 @@ public class ArrayGenerator {
         Collections.reverse(list);
         array = (Integer[]) list.toArray();
         arrayContainer.setArray(array);
-        arrayContainer.setAlgorithmName("Inversely Ordered");
+        arrayContainer.setArrayType("Inversely Ordered");
 
         return arrayContainer;
     }

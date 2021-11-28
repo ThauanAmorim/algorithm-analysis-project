@@ -24,6 +24,7 @@ public class Result {
 	@Column(name = "ID")
     private Long id;
     private String algorithmName;
+    private String arrayType;
     private Integer lenght;
     private Integer run;
     private Integer comparisonsNumber;

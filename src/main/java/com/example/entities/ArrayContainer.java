@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ArrayContainer {
-    private String algorithmName;
+    private String arrayType;
     private Integer lenght;
     private Integer[] array;
 }
