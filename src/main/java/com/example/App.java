@@ -20,8 +20,10 @@ public class App implements CommandLineRunner {
     public void run(String... args) throws Exception {
         ArrayGenerator generator = new ArrayGenerator();
         
-        ArrayContainer arrayContainer = generator.almostOrdered(10, 50);
-        insertionSort.calculateTime(arrayContainer);
-        
+        for(int i = 0; i < 5; i++) {
+            ArrayContainer arrayContainer = generator.almostOrdered(10, 50);
+            insertionSort.calculateTime(arrayContainer);
+
+        }
     }
 }

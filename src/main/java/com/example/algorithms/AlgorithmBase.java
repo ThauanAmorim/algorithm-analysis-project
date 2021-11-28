@@ -32,6 +32,7 @@ public abstract class AlgorithmBase {
     public void calculateTime(ArrayContainer arrayContainerInput) {
         result = new Result();
         arrayContainer = arrayContainerInput;
+        
         // toPrint(array);
         timer.start();
         run(arrayContainer.getArray());
