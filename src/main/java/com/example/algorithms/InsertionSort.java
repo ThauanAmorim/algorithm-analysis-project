@@ -19,7 +19,6 @@ public class InsertionSort extends AlgorithmBase {
                 j = j - 1;
             }
             array[j + 1] = key;
-            // this.result.addRegisterMovimentNumber(1);
         }
         this.result.addComparisonsNumber(1);
         return array;
