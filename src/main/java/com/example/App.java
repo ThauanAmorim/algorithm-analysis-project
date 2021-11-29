@@ -19,11 +19,27 @@ public class App implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         ArrayGenerator generator = new ArrayGenerator();
-        
-        for(int i = 0; i < 5; i++) {
-            ArrayContainer arrayContainer = generator.almostOrdered(10, 50);
-            insertionSort.calculateTime(arrayContainer);
+        int lenght = 1000;
 
+        ArrayContainer arrayContainer = null;
+        
+        arrayContainer = generator.ordered(lenght);
+        insertionSort.calculateTime(arrayContainer);
+        insertionSort.resetRunNumber();
+
+        arrayContainer = generator.inverselyOrdered(lenght);
+        insertionSort.calculateTime(arrayContainer);
+        insertionSort.resetRunNumber();
+
+        for(int i = 0; i < 14; i++) {
+            arrayContainer = generator.almostOrdered(lenght, 35);
+            insertionSort.calculateTime(arrayContainer);
+        }
+        insertionSort.resetRunNumber();
+
+        for(int i = 0; i < 14; i++) {
+            arrayContainer = generator.random(lenght);
+            insertionSort.calculateTime(arrayContainer);
         }
     }
 }

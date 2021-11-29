@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +12,7 @@ public class ArrayGenerator {
 
     public ArrayContainer ordered(int quantity) {
         Integer[] array = new Integer[quantity];
-        int count = 2;
+        int count = 1;
         int lastNumber = 0;
 
         for(int i = 0; i < quantity; i++) {
@@ -39,14 +38,12 @@ public class ArrayGenerator {
     }
 
     public ArrayContainer random(int quantity) {
-        Integer[] array = new Integer[quantity];
-        int maxValue = (quantity * 10) + 1;
-        
-        for(int i = 0; i < quantity; i++) {
-            array[i] = random.nextInt(maxValue);
-        }
+        ArrayContainer arrayContainer = ordered(quantity);
+        Integer[] array = arrayContainer.getArray();
 
-        repeaterNumberValidate(array, new ArrayList<Integer>());
+        List<Integer> list = Arrays.asList(array);
+        Collections.shuffle(list);
+        array = (Integer[]) list.toArray();
 
         return new ArrayContainer("random", quantity, array);
     }
@@ -58,7 +55,7 @@ public class ArrayGenerator {
         int exchangesNumber = (int) (quantity - (quantity * (orderedPorcent / 100)));
         int firstPosition;
         int secondPosition;
-        int aux;
+        Integer aux;
 
         if(exchangesNumber % 2 != 0) {
             --exchangesNumber;
@@ -96,23 +93,5 @@ public class ArrayGenerator {
             array[secondPosition] = aux;
         }
         return new ArrayContainer("almost Ordered - " + orderedPorcent + "%", quantity, array);
-    }
-
-    private void repeaterNumberValidate(Integer[] array, List<Integer> indexRepeater) {
-        for(int i = 0; i < array.length -1; i++) {
-            for(int j = i +1; j < array.length; j++){
-                if (array[j] == array[i]) {
-                    indexRepeater.add(j);
-                }
-            }
-        }
-
-        if(!indexRepeater.isEmpty()) {
-            for(Integer index : indexRepeater) {
-                array[index] = random.nextInt((array.length * 10) + 1);
-            }
-            indexRepeater.clear();
-            repeaterNumberValidate(array, indexRepeater);
-        }
     }
 }
