@@ -28,17 +28,17 @@ public abstract class AlgorithmBase {
         timer = Stopwatch.createUnstarted();
     }
 
-    protected abstract Integer[] run(Integer[] array);
+    protected abstract void run(Integer[] array);
 
     protected void calculate(ArrayContainer arrayContainerInput) {
         result = new Result();
         arrayContainer = arrayContainerInput;
         
-        // toPrint(array);
+        toPrint(arrayContainer.getArray());
         timer.start();
         run(arrayContainer.getArray());
         timer.stop();
-        // toPrint(array);
+        toPrint(arrayContainer.getArray());
         result.setTime(timer.elapsed(TimeUnit.MICROSECONDS));
         result.setAlgorithmName(getClass().getSimpleName());
         result.setArrayType(arrayContainer.getArrayType());
@@ -55,39 +55,39 @@ public abstract class AlgorithmBase {
     public void initCalculate() {
         ArrayGenerator generator = new ArrayGenerator();
 
+        Integer[] lenghts = {10};
         // Integer[] lenghts = {10, 100, 1000, 10000, 100000};
-        Integer[] lenghts = {1000000};
+
+        ArrayContainer arrayContainer = null;
 
         for(Integer value : lenghts) {
-            ArrayContainer arrayContainer = null;
-            
-            arrayContainer = generator.ordered(value);
-            calculate(arrayContainer);
-            resetRunNumber();
+            // arrayContainer = generator.ordered(value);
+            // calculate(arrayContainer);
+            // resetRunNumber();
     
-            arrayContainer = generator.inverselyOrdered(value);
-            calculate(arrayContainer);
-            resetRunNumber();
+            // arrayContainer = generator.inverselyOrdered(value);
+            // calculate(arrayContainer);
+            // resetRunNumber();
     
-            for(int i = 0; i < 14; i++) {
-                arrayContainer = generator.almostOrdered(value, 35);
-                calculate(arrayContainer);
-            }
-            resetRunNumber();
+            // for(int i = 0; i < 14; i++) {
+            //     arrayContainer = generator.almostOrdered(value, 35);
+            //     calculate(arrayContainer);
+            // }
+            // resetRunNumber();
     
-            for(int i = 0; i < 14; i++) {
+            for(int i = 0; i < 1; i++) {
                 arrayContainer = generator.random(value);
                 calculate(arrayContainer);
             }
         }
     }
 
-    // private void toPrint(Integer[] array) {
-    //     String text = "[";
-    //     for (int i = 0; i < array.length-1; i++) {
-    //         text += array[i] + ", ";
-    //     }
-    //     text += array[array.length-1] + "]";
-    //     System.out.println(text);
-    // }
+    private void toPrint(Integer[] array) {
+        String text = "[";
+        for (int i = 0; i < array.length-1; i++) {
+            text += array[i] + ", ";
+        }
+        text += array[array.length-1] + "]";
+        System.out.println(text);
+    }
 }

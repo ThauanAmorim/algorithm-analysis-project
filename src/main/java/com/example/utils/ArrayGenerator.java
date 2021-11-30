@@ -12,7 +12,7 @@ public class ArrayGenerator {
 
     public ArrayContainer ordered(int quantity) {
         Integer[] array = new Integer[quantity];
-        int count = 1;
+        int count = 2;
         int lastNumber = 0;
 
         for(int i = 0; i < quantity; i++) {

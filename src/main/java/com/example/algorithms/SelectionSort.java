@@ -3,23 +3,23 @@ package com.example.algorithms;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InsertionSort extends AlgorithmBase {
-
+public class SelectionSort extends AlgorithmBase {
     @Override
     protected void run(Integer[] array) {
-        int i, key, j;
-        for (i = 1; i < array.length; i++) {
-            key = array[i];
+        int j;
+        int key;
+        int i;
+
+        for (j = 1; j < array.length; j++) {
+            key = array[j];
             this.result.addRegisterMovimentNumber(1);
-            j = i - 1;
-            while (j >= 0 && array[j] > key) {
+            for (i = j - 1; (i >= 0) && (array[i] > key); i--) {
                 this.result.addComparisonsNumber(1);
-                array[j + 1] = array[j];
+                array[i + 1] = array[i];
                 this.result.addRegisterMovimentNumber(1);
-                j = j - 1;
             }
-            this.result.addComparisonsNumber(1);
-            array[j + 1] = key;
+            this.result.addRegisterMovimentNumber(1);
+            array[i + 1] = key;
             this.result.addRegisterMovimentNumber(1);
         }
     }
