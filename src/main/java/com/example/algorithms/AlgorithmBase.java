@@ -34,11 +34,9 @@ public abstract class AlgorithmBase {
         result = new Result();
         arrayContainer = arrayContainerInput;
         
-        toPrint(arrayContainer.getArray());
         timer.start();
         run(arrayContainer.getArray());
         timer.stop();
-        toPrint(arrayContainer.getArray());
         result.setTime(timer.elapsed(TimeUnit.MICROSECONDS));
         result.setAlgorithmName(getClass().getSimpleName());
         result.setArrayType(arrayContainer.getArrayType());
@@ -79,14 +77,5 @@ public abstract class AlgorithmBase {
                 calculate(arrayContainer);
             }
         }
-    }
-
-    private void toPrint(Integer[] array) {
-        String text = "[";
-        for (int i = 0; i < array.length-1; i++) {
-            text += array[i] + ", ";
-        }
-        text += array[array.length-1] + "]";
-        System.out.println(text);
     }
 }
