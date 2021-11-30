@@ -74,7 +74,7 @@ public abstract class AlgorithmBase {
             }
             resetRunNumber();
     
-            for(int i = 0; i < 1; i++) {
+            for(int i = 0; i < 14; i++) {
                 arrayContainer = generator.random(value);
                 calculate(arrayContainer);
             }
