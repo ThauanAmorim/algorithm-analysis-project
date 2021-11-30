@@ -29,18 +29,13 @@ public class App implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         bubbleSort.initCalculate();
-        System.out.println("\n\n\n");
 
         insertionSort.initCalculate();
-        System.out.println("\n\n\n");
 
         mergeSort.initCalculate();
-        System.out.println("\n\n\n");
 
         quickSort.initCalculate();
-        System.out.println("\n\n\n");
 
         selectionSort.initCalculate();
-        System.out.println("\n\n\n");
     }
 }
