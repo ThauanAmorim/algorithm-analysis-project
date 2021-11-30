@@ -55,25 +55,24 @@ public abstract class AlgorithmBase {
     public void initCalculate() {
         ArrayGenerator generator = new ArrayGenerator();
 
-        Integer[] lenghts = {10};
-        // Integer[] lenghts = {10, 100, 1000, 10000, 100000};
+        Integer[] lenghts = {10, 100, 1000, 10000, 100000};
 
         ArrayContainer arrayContainer = null;
 
         for(Integer value : lenghts) {
-            // arrayContainer = generator.ordered(value);
-            // calculate(arrayContainer);
-            // resetRunNumber();
+            arrayContainer = generator.ordered(value);
+            calculate(arrayContainer);
+            resetRunNumber();
     
-            // arrayContainer = generator.inverselyOrdered(value);
-            // calculate(arrayContainer);
-            // resetRunNumber();
+            arrayContainer = generator.inverselyOrdered(value);
+            calculate(arrayContainer);
+            resetRunNumber();
     
-            // for(int i = 0; i < 14; i++) {
-            //     arrayContainer = generator.almostOrdered(value, 35);
-            //     calculate(arrayContainer);
-            // }
-            // resetRunNumber();
+            for(int i = 0; i < 14; i++) {
+                arrayContainer = generator.almostOrdered(value, 35);
+                calculate(arrayContainer);
+            }
+            resetRunNumber();
     
             for(int i = 0; i < 1; i++) {
                 arrayContainer = generator.random(value);
