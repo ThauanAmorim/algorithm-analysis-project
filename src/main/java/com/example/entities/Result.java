@@ -27,15 +27,15 @@ public class Result {
     private String arrayType;
     private Integer lenght;
     private Integer run;
-    private Integer comparisonsNumber = 0;
-    private Integer registerMovimentNumber = 0;
+    private Long comparisonsNumber = 0l;
+    private Long registerMovimentNumber = 0l;
     private Long time;
 
-    public void addComparisonsNumber(int number) {
+    public void addComparisonsNumber(long number) {
         this.comparisonsNumber += number;
     }
 
-    public void addRegisterMovimentNumber(int number) {
+    public void addRegisterMovimentNumber(long number) {
         this.registerMovimentNumber += number;
     }
 }

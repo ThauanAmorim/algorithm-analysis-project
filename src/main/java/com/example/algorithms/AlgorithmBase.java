@@ -24,19 +24,16 @@ public abstract class AlgorithmBase {
     @Autowired
     protected ResultRepository repository;
 
-    public AlgorithmBase() {
-        timer = Stopwatch.createUnstarted();
-    }
-
     protected abstract void run(Integer[] array);
 
     protected void calculate(ArrayContainer arrayContainerInput) {
         result = new Result();
         arrayContainer = arrayContainerInput;
         
-        timer.start();
+        timer = Stopwatch.createStarted();
         run(arrayContainer.getArray());
         timer.stop();
+
         result.setTime(timer.elapsed(TimeUnit.MICROSECONDS));
         result.setAlgorithmName(getClass().getSimpleName());
         result.setArrayType(arrayContainer.getArrayType());
