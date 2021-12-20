@@ -14,8 +14,9 @@ public class BubbleSort extends AlgorithmBase {
                     array[j] = array[j + 1];
                     array[j + 1] = aux;
                     this.result.addRegisterMovimentNumber(3);
+                } else {
+                    this.result.addComparisonsNumber(1);
                 }
-                this.result.addComparisonsNumber(1);
             }
         }
     }

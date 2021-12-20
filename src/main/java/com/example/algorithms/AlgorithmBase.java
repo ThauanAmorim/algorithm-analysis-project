@@ -50,7 +50,7 @@ public abstract class AlgorithmBase {
     public void initCalculate() {
         ArrayGenerator generator = new ArrayGenerator();
 
-        Integer[] lenghts = {10, 100, 1000, 10000, 100000};
+        Integer[] lenghts = {10, 100, 1000, 10000, 100000, 1000000};
 
         ArrayContainer arrayContainer = null;
 
@@ -63,13 +63,13 @@ public abstract class AlgorithmBase {
             calculate(arrayContainer);
             resetRunNumber();
     
-            for(int i = 0; i < 14; i++) {
+            for(int i = 0; i < 3; i++) {
                 arrayContainer = generator.almostOrdered(value, 35);
                 calculate(arrayContainer);
             }
             resetRunNumber();
     
-            for(int i = 0; i < 14; i++) {
+            for(int i = 0; i < 1; i++) {
                 arrayContainer = generator.random(value);
                 calculate(arrayContainer);
             }
